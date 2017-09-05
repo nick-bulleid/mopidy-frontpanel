@@ -6,12 +6,12 @@ Mopidy-FrontPanel
     :target: https://pypi.python.org/pypi/Mopidy-FrontPanel/
     :alt: Latest PyPI version
 
-.. image:: https://img.shields.io/travis/doubteded/mopidy-frontpanel/master.svg?style=flat
-    :target: https://travis-ci.org/doubteded/mopidy-frontpanel
+.. image:: https://img.shields.io/travis/nick-bulleid/mopidy-frontpanel/master.svg?style=flat
+    :target: https://travis-ci.org/nick-bulleid/mopidy-frontpanel
     :alt: Travis CI build status
 
-.. image:: https://img.shields.io/coveralls/doubteded/mopidy-frontpanel/master.svg?style=flat
-   :target: https://coveralls.io/r/doubteded/mopidy-frontpanel
+.. image:: https://img.shields.io/coveralls/nick-bulleid/mopidy-frontpanel/master.svg?style=flat
+   :target: https://coveralls.io/r/nick-bulleid/mopidy-frontpanel
    :alt: Test coverage
 
 Extension for using a front panel for Mopidy
@@ -41,16 +41,16 @@ Mopidy-FrontPanel to your Mopidy configuration file::
 Project resources
 =================
 
-- `Source code <https://github.com/doubteded/mopidy-frontpanel>`_
-- `Issue tracker <https://github.com/doubteded/mopidy-frontpanel/issues>`_
+- `Source code <https://github.com/nick-bulleid/mopidy-frontpanel>`_
+- `Issue tracker <https://github.com/nick-bulleid/mopidy-frontpanel/issues>`_
 
 
 Credits
 =======
 
-- Original author: `Nick Bulleid <https://github.com/doubteded`__
-- Current maintainer: `Nick Bulleid <https://github.com/doubteded`__
-- `Contributors <https://github.com/doubteded/mopidy-frontpanel/graphs/contributors>`_
+- Original author: `Nick Bulleid`__
+- Current maintainer: `Nick Bulleid`__
+- `Contributors <https://github.com/nick-bulleid/mopidy-frontpanel/graphs/contributors>`_
 
 
 Changelog
