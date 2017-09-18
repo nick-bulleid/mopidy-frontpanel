@@ -18,15 +18,19 @@ class Painter:
         self.update()
 
     def update(self):
+        # get screen size
         width = self.disp.width
         height = self.disp.height
 
+        # create a drawing surface
         image = Image.new('1', (width, height))
         font = ImageFont.load_default()
         draw = ImageDraw.Draw(image)
 
+        # draw a black rectangle
         draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
+        # print out the current track
         current_track = self.core.playback.get_current_track().get()
         if current_track is not None:
             draw.text((2, 0), current_track.name, font=font, fill=255)
@@ -36,5 +40,6 @@ class Painter:
         else:
             draw.text((0, 0), "No playing track", font=font, fill=255)
 
+        # send image to screen
         self.disp.image(image)
         self.disp.display()
