@@ -6,15 +6,19 @@ from mopidy.core import CoreListener
 
 import pykka
 
+import .painter import Painter
+
 logger = logging.getLogger(__name__)
+
 
 class FrontPanel(pykka.ThreadingActor, CoreListener):
     def __init__(self, config, core):
         super(FrontPanel, self).__init__()
         self.core = core
+        self.painter = Painter(core, self)
 
     def on_start(self):
-        pass
+        self.painter.start()
 
     def onPlayPause(self):
         pass
@@ -41,7 +45,7 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
         pass
 
     def track_playback_started(self, tl_track):
-        pass
+        self.painter.update()
 
     def track_playback_ended(self, tl_track, time_position):
-        pass
+        self.painter.update()
