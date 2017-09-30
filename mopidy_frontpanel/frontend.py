@@ -22,7 +22,19 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
         self.painter.start()
 
     def handleInput(self, input):
-        self.menu.handleInput(input)
+        if (input == "play"):
+            pass
+        elif (input == "pause"):
+            pass
+        elif (input == "stop"):
+            pass
+        elif (input == "vol_up"):
+            pass
+        elif (input == "vol_down"):
+            pass
+        else:
+            self.menu.handleInput(input)
+
         self.painter.update()
 
     def track_playback_started(self, tl_track):
