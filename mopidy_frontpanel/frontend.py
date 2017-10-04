@@ -6,8 +6,8 @@ from mopidy.core import CoreListener
 
 import pykka
 
-import .menu import BrowseMenu
-import .painter import Painter
+from .menu import BrowseMenu
+from .painter import Painter
 
 logger = logging.getLogger(__name__)
 
@@ -23,11 +23,11 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
 
     def handleInput(self, input):
         if (input == "play"):
-            pass
+            self.core.playback.resume()
         elif (input == "pause"):
-            pass
+            self.core.playback.pause()
         elif (input == "stop"):
-            pass
+            self.core.playback.stop()
         elif (input == "vol_up"):
             pass
         elif (input == "vol_down"):
