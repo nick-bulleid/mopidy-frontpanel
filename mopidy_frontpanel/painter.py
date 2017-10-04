@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
-import Adafruit_SSD1306
+import Adafruit_SSD1306 # pylint: disable=import-error
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont # pylint: disable=import-error
 
 # Raspberry Pi pin configuration:
 RST = 24

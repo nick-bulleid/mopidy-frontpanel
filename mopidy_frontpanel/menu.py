@@ -4,33 +4,29 @@ class BrowseMenu:
     def __init__(self, core):
         self.core = core
 
-        self.dirHistory = []
-        self.dirCurrent = None
-        self.dirChildren = []
-        self.childIdx = None
+        self.dir_history = []
+        self.dir_current = None
+        self.dir_children = []
+        self.child_idx = None
 
-    def handleInput(self, input):
-        if input == "left":
-            if (self.childIdx > len(self.dirChildren))
-                self.childIdx = 0
-            self.childIdx += 1
-
-        elif input == "right":
-            if (self.childIdx == 0)
-                self.childIdx = len(self.dirChildren)
-            self.childIdx -= 1
-
-        elif input == "select":
+    def handle_input(self, input_key):
+        if input_key == "left":
+            if self.child_idx > len(self.dir_children):
+                self.child_idx = 0
+            self.child_idx += 1
+        elif input_key == "right":
+            if self.child_idx == 0:
+                self.child_idx = len(self.dir_children)
+            self.child_idx -= 1
+        elif input_key == "select":
             pass
-
-        elif input == "back":
-            dirParent = self.dirHistory.pop()
-            self.dirChildren = self.core.library.browse(dirParent.uri).get()
-            self.childIdx = self.dirChildren.index(self.dirCurrent)
-            self.dirCurrent = dirParent
-
-        elif input == "exit":
-            self.dirCurrent = None
-            self.dirHistory = []
-            self.refCurrent = None
-            self.refList = []
+        elif input_key == "back":
+            dir_parent = self.dir_history.pop()
+            self.dir_children = self.core.library.browse(dir_parent.uri).get()
+            self.child_idx = self.dir_children.index(self.dir_current)
+            self.dir_current = dir_parent
+        elif input_key == "exit":
+            self.dir_history = []
+            self.dir_current = None
+            self.dir_children = []
+            self.child_idx = None

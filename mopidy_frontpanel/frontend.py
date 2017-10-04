@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 import logging
 
-from mopidy.core import CoreListener
+from mopidy.core import CoreListener # pylint: disable=import-error
 
-import pykka
+import pykka # pylint: disable=import-error
 
 from .menu import BrowseMenu
 from .painter import Painter
@@ -21,19 +21,19 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
     def on_start(self):
         self.painter.start()
 
-    def handleInput(self, input):
-        if (input == "play"):
+    def handle_input(self, input_key):
+        if input_key == "play":
             self.core.playback.resume()
-        elif (input == "pause"):
+        elif input_key == "pause":
             self.core.playback.pause()
-        elif (input == "stop"):
+        elif input_key == "stop":
             self.core.playback.stop()
-        elif (input == "vol_up"):
+        elif input_key == "vol_up":
             pass
-        elif (input == "vol_down"):
+        elif input_key == "vol_down":
             pass
         else:
-            self.menu.handleInput(input)
+            self.menu.handleInput(input_key)
 
         self.painter.update()
 
