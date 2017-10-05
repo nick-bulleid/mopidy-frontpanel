@@ -28,7 +28,7 @@ setup(
         'Mopidy >= 1.0',
         'Pykka >= 1.1',
         'Adafruit_SSD1306',
-        'PIL'
+        'Pillow'
     ],
     entry_points={
         'mopidy.ext': [
