@@ -22,6 +22,8 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
         self.painter.start()
 
     def handle_input(self, input_key):
+        self.painter.print_text(input_key)
+
         if input_key == "play":
             self.core.playback.resume()
         elif input_key == "pause":
@@ -32,8 +34,14 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
             pass
         elif input_key == "vol_down":
             pass
-        else:
-            self.menu.handleInput(input_key)
+        elif input_key == "next":
+            pass
+        elif input_key == "prev":
+            pass
+        elif input_key == "select":
+            pass
+        elif input_key == "back":
+            pass
 
         self.painter.update()
 

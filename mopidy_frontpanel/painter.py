@@ -43,3 +43,23 @@ class Painter:
         # send image to screen
         self.disp.image(image)
         self.disp.display()
+
+    def print_text(self, text)
+        # get screen size
+        width = self.disp.width
+        height = self.disp.height
+
+        # create a drawing surface
+        image = Image.new('1', (width, height))
+        font = ImageFont.load_default()
+        draw = ImageDraw.Draw(image)
+
+        # draw a black rectangle
+        draw.rectangle((0, 0, width, height), outline=0, fill=0)
+
+        # draw text
+        draw.text((0, 0), text, font=font, fill=255)
+
+        # send image to screen
+        self.disp.image(image)
+        self.disp.display()

@@ -4,29 +4,36 @@ class BrowseMenu:
     def __init__(self, core):
         self.core = core
 
-        self.dir_history = []
-        self.dir_current = None
-        self.dir_children = []
-        self.child_idx = None
+        self.history = []
+        self.items = []
+        self.idx = 0
 
-    def handle_input(self, input_key):
-        if input_key == "left":
-            if self.child_idx > len(self.dir_children):
-                self.child_idx = 0
-            self.child_idx += 1
-        elif input_key == "right":
-            if self.child_idx == 0:
-                self.child_idx = len(self.dir_children)
-            self.child_idx -= 1
-        elif input_key == "select":
-            pass
-        elif input_key == "back":
-            dir_parent = self.dir_history.pop()
-            self.dir_children = self.core.library.browse(dir_parent.uri).get()
-            self.child_idx = self.dir_children.index(self.dir_current)
-            self.dir_current = dir_parent
-        elif input_key == "exit":
-            self.dir_history = []
-            self.dir_current = None
-            self.dir_children = []
-            self.child_idx = None
+    def next():
+        if self.idx > len(self.items):
+            self.idx = 0
+        self.idx += 1
+
+    def prev():
+        if self.idx == 0:
+            self.idx = len(self.items)
+        self.idx -= 1
+
+    def up():
+        lastDir = self.history.pop()
+        # TODO - handle case of empty history
+        self.items = self.core.library.browse(self.history[-1]).get()
+        self.idx = self.items.index(lastDir)
+
+    def down():
+        pass
+
+    def clear():
+        self.history = []
+        self.items = []
+        self.idx = 0
+
+    def get_name(idx):
+        pass
+
+    def get_current_index():
+        pass
