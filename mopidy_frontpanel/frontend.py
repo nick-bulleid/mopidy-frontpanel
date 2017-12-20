@@ -8,6 +8,7 @@ import pykka # pylint: disable=import-error
 
 from .menu import BrowseMenu
 from .painter import Painter
+from .input import Input
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,7 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
         self.core = core
         self.painter = Painter(core, self)
         self.menu = BrowseMenu(core)
+        self.input = Input(self)
 
     def on_start(self):
         self.painter.start()

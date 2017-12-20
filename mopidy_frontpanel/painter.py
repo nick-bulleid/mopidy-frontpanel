@@ -44,7 +44,7 @@ class Painter:
         self.disp.image(image)
         self.disp.display()
 
-    def print_text(self, text)
+    def print_text(self, text):
         # get screen size
         width = self.disp.width
         height = self.disp.height
