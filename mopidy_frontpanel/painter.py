@@ -5,7 +5,7 @@ import Adafruit_SSD1306 # pylint: disable=import-error
 from PIL import Image, ImageDraw, ImageFont # pylint: disable=import-error
 
 # Raspberry Pi pin configuration:
-RST = 24
+RST = 4
 
 class Painter:
     def __init__(self, core, menu):
@@ -30,15 +30,19 @@ class Painter:
         # draw a black rectangle
         draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
-        # print out the current track
-        current_track = self.core.playback.get_current_track().get()
-        if current_track is not None:
-            draw.text((2, 0), current_track.name, font=font, fill=255)
-            draw.text((2, 8), current_track.album.name, font=font, fill=255)
-            artists = ', '.join(sorted([a.name for a in current_track.artists]))
-            draw.text((2, 16), artists, font=font, fill=255)
-        else:
-            draw.text((0, 0), "No playing track", font=font, fill=255)
+        menu_idx = self.menu.get_current_index()
+        if menu_idx is not None:
+            draw.text((0, 0), self.menu.get_name(menu_idx), font=font, fill=255)
+        #else:
+            # print out the current track
+            #current_track = self.core.playback.get_current_track().get()
+            #if current_track is not None:
+            #    draw.text((2, 0), current_track.name, font=font, fill=255)
+            #    draw.text((2, 8), current_track.album.name, font=font, fill=255)
+            #    artists = ', '.join(sorted([a.name for a in current_track.artists]))
+            #    draw.text((2, 16), artists, font=font, fill=255)
+            #else:
+                #draw.text((0, 0), "No playing track", font=font, fill=255)
 
         # send image to screen
         self.disp.image(image)

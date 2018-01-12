@@ -6,34 +6,41 @@ class BrowseMenu:
 
         self.history = []
         self.items = []
-        self.idx = 0
+        self.idx = None
 
-    def next():
-        if self.idx > len(self.items):
+    def next(self):
+        if self.idx is not None:
+            if self.idx == len(self.items):
+                self.idx = 0
+            self.idx += 1
+
+    def prev(self):
+        if self.idx is not None:
+            if self.idx == 0:
+                self.idx = len(self.items)
+            self.idx -= 1
+
+    def up(self):
+        if len(self.history) == 0:
+            self.clear()
+        else:
+            lastDir = self.history.pop()
+            self.items = self.core.library.browse(self.history[-1].url).get()
+            self.idx = self.items.index(lastDir)
+
+    def select(self):
+        if self.idx == None:
+            self.items = self.core.library.browse(None).get()
             self.idx = 0
-        self.idx += 1
 
-    def prev():
-        if self.idx == 0:
-            self.idx = len(self.items)
-        self.idx -= 1
-
-    def up():
-        lastDir = self.history.pop()
-        # TODO - handle case of empty history
-        self.items = self.core.library.browse(self.history[-1]).get()
-        self.idx = self.items.index(lastDir)
-
-    def down():
-        pass
-
-    def clear():
+    def clear(self):
         self.history = []
         self.items = []
-        self.idx = 0
+        self.idx = None
 
-    def get_name(idx):
-        pass
+    def get_name(self, idx):
+        if len(self.items) != 0:
+            return self.items[idx].name
 
-    def get_current_index():
-        pass
+    def get_current_index(self):
+        return self.idx

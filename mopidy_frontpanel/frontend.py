@@ -16,15 +16,15 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
     def __init__(self, config, core):
         super(FrontPanel, self).__init__()
         self.core = core
-        self.painter = Painter(core, self)
         self.menu = BrowseMenu(core)
+        self.painter = Painter(core, self.menu)
         self.input = Input(self)
 
     def on_start(self):
         self.painter.start()
 
     def handle_input(self, input_key):
-        self.painter.print_text(input_key)
+        #self.painter.print_text(input_key)
 
         if input_key == "play":
             self.core.playback.resume()
@@ -37,13 +37,13 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
         elif input_key == "vol_down":
             pass
         elif input_key == "next":
-            pass
+            self.menu.next()
         elif input_key == "prev":
-            pass
+            self.menu.prev()
         elif input_key == "select":
-            pass
+            self.menu.select()
         elif input_key == "back":
-            pass
+            self.menu.up()
 
         self.painter.update()
 
