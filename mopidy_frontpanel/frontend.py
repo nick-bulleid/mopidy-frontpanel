@@ -44,6 +44,8 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
             self.menu.select()
         elif input_key == "back":
             self.menu.up()
+        elif input_key == "exit":
+            self.menu.clear()
 
         self.painter.update()
 

@@ -15,6 +15,7 @@ class Input:
         right_pin.when_pressed = self.on_right_turn
         knob_pin.when_pressed = self.on_knob_press
         back_pin.when_pressed = self.on_back_press
+        back_pin.when_held = self.on_back_held
 
     def on_left_turn(self):
         self.controller.handle_input("prev")
@@ -27,3 +28,6 @@ class Input:
 
     def on_back_press(self):
         self.controller.handle_input("back")
+
+    def on_back_held(self):
+        self.controller.handle_input("exit")
