@@ -16,7 +16,7 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
     def __init__(self, config, core):
         super(FrontPanel, self).__init__()
         self.core = core
-        self.menu = BrowseMenu(core)
+        self.menu = MenuModel(core)
         self.painter = Painter(core, self.menu)
         self.input = Input(self)
 
