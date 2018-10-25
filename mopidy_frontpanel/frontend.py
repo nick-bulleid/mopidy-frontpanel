@@ -21,7 +21,7 @@ class FrontPanel(pykka.ThreadingActor, CoreListener):
         self.input = Input(self)
 
     def on_start(self):
-        self.painter.start()
+        self.painter.update()
 
     def handle_input(self, input_key):
         #self.painter.print_text(input_key)
