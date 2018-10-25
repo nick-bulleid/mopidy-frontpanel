@@ -36,9 +36,9 @@ class Painter:
                 draw.text((0, 0), "No playing track", font=font, fill=255)
 
     def print_text(self, text):
-        while canvas(self.device) as draw:
+        with canvas(self.device) as draw:
             # draw a black rectangle
-            draw.rectangle((0, 0, width, height), outline=0, fill=0)
+            draw.rectangle(self.device.bounding_box, outline=0, fill=0)
 
             # draw text
             draw.text((0, 0), text, font=font, fill=255)

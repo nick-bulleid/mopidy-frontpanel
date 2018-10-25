@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from mopidy.models import Ref
 
 class MenuSlice:
-    def __init__(self, items)
+    def __init__(self, items):
         self.items = items
         self.idx = 0
 
@@ -24,11 +24,11 @@ class MenuSlice:
         return self.idx
 
     def get_name(self, idx):
-        if idx < len(self.items)
+        if idx < len(self.items):
             return self.items[idx].name
 
     def get_type(self, idx):
-        if idx < len(self.items)
+        if idx < len(self.items):
             return self.items[idx].type
 
     def get_current_item(self):

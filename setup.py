@@ -27,7 +27,8 @@ setup(
         'setuptools',
         'Mopidy >= 1.0',
         'Pykka >= 1.1',
-        'luma.oled >= 2.5.1'
+        'luma.oled >= 2.5.1',
+        'gpiozero >= 1.4.1'
     ],
     entry_points={
         'mopidy.ext': [
