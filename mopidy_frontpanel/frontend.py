@@ -6,7 +6,7 @@ from mopidy.core import CoreListener # pylint: disable=import-error
 
 import pykka # pylint: disable=import-error
 
-from .menu import BrowseMenu
+from .menu import MenuModel
 from .painter import Painter
 from .input import Input
 
